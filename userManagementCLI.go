@@ -50,8 +50,7 @@ func main() {
 	// --- CLI Enter Start ---
 	reader := bufio.NewReader(os.Stdin)
 	for {
-
-		fmt.Print("Enter UserName: ")
+		fmt.Print("Enter UserName (or 'q' to quit): ")
 		userName, _ := reader.ReadString('\n')
 		userName = strings.TrimSpace(userName)
 
