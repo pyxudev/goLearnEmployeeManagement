@@ -19,13 +19,13 @@ type User struct {
 }
 
 func main() {
-	// Load .env File
+	// --- Load .env File ---
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
 
-	// Reade Environment Variables
+	// --- Reade Environment Variables ---
 	user := os.Getenv("DB_USER")
 	pass := os.Getenv("DB_PASS")
 	host := os.Getenv("DB_HOST")
@@ -40,7 +40,7 @@ func main() {
 		panic("failed to connect database")
 	}
 
-	// Table Migration
+	// --- Table Migration ---
 	if err := db.AutoMigrate(&User{}); err != nil {
 		panic("failed to migrate: " + err.Error())
 	}
@@ -68,8 +68,8 @@ func main() {
 	}
 	// --- CLI Enter End ---
 
-	// CUDA Operations
-	result := db.Create(&newUser) // Insert Records
+	// --- Insert Records ---
+	result := db.Create(&newUser)
 
 	if result.Error != nil {
 		panic("Failed to insert database. Error Message: " + result.Error.Error())
